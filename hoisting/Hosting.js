@@ -1,61 +1,90 @@
-/**
- * Created by bo on 2/16/16.
+/*
+
+    Hoisting
+    Variabler og nogle funktioner vil blive hoisted til toppen af deres (funktions) scope.
+
+        Hoisting design regl:
+        For at undgå fejl: erklære altid alle variabler i begyndelsen (toppen) af et hvert funktions scope.
  */
 
-// Hoisting
-    // variables and some functions will be hoisted to the top of their (function) scope.
 
-var myVar = "hello world";
+/*
+    Koden herunder bliver set af compileren på følgende måde pga. hoisting
+
+    var myVar;
+    console.log(myVar);
+    myVar = "Hello from inside function";
+    console.log(myVar);
+
+ */
 
 (function() {
-    console.log(myVar); // outputs :: hello world
+    console.log(myVar);                         // outputs :: undefined
+    var myVar = "Hello myVar";
+    console.log(myVar);                         // outputs :: Hello myVar
 })();
 
-(function() {
-    // var myVar; :: the declaration of the local myVar is hoisted to this point and is not defined yet
-    console.log(myVar); // outputs :: undefined
+/*
+    Et eksempel på at variaber bliver hoisted til toppen af deres funktions scope og ikke til deres block-scope
 
-    var myVar = "Hello from inside function"; // now myVar is defined
-})();
+    Koden herunder bliver set af compileren på følgende måde pga. hoisting:
 
-(function() {
-    var myVar = "Hello from inside function"; // now myVar is defined (initialized) and declared
-    console.log(myVar); // outputs :: Hello from inside function
-
-})();
-
-
-console.log("-------------------------------------------------");
-
-(function() {
-    // var number;
-
-    for(var i = 0; i < 3; i++) {
-        var number = 3;             // variables is hoisted to the top of its function scope
+    var number;
+    if(true) {
+        number = 3;
     }
-    console.log(number); // outputs :: 3
+    console.log(number);
 
-})();
-
-console.log("----------------------------------------------------");
+*/
 
 (function() {
 
-    myFunction();
-    // function declarations is hoisted
-    function myFunction() {
-        console.log("Hello from inside function"); // outputs :: Hello for inside function
+    if(true) {
+        var number = 3;
+    }
+    console.log(number);                // outputs :: 3
+})();
+
+/*
+    Et eksempel på at Funktionserklæringer bliver hoisted
+
+    Koden herunder bliver set af compileren på følgende måde pga. hoisting:
+
+    function myFunction1() {
+        console.log("Hello myFunction1");
+    }
+    myFunction1();
+*/
+
+(function() {
+
+    myFunction1();
+
+    function myFunction1() {
+        console.log("Hello myFunction1");        // outputs :: Hello myFunction1
     }
 })();
 
-(function() {
+/*
+    Et eksempel på at Funktionserklæringer bliver hoisted men ikke tildelingen.
 
-    // myFunction(); :: <- this will not work!!
+    Koden herunder bliver set af compileren på følgende måde pga. hoisting:
 
-    // function expression is not hoisted
-    var myFunction = function() {
-        console.log("Hello from inside function"); // outputs :: Hello from inside function
+    var myFunction2;
+    // myFunction2(); :: <- this will not work!!
+    myFunction2 = function() {
+        console.log("Hello myFunction2");
     };
-    myFunction();
+    myFunction2();
+ */
+
+(function() {
+
+    // myFunction2(); :: <- this will not work!!
+
+    var myFunction2 = function() {
+        console.log("Hello myFunction2");       // outputs :: Hello myFunction2
+    };
+    myFunction2();
 
 })();

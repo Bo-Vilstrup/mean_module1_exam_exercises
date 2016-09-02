@@ -1,28 +1,53 @@
-/**
- * Created by bo on 2/16/16.
- */
-
 /*
-"use strict"
+    Man deklarerer Strict mode ved at tilføje ”use strict; I begyndelsen af et JavaScript eller en JavaScript funktion.
 
-Strict mode is declared by adding "use strict"; to the beginning of a JavaScript or a JavaScript function.
-Declared at the beginning of a JavaScript file, it has global scope (all code will execute in strict mode):
+    Hvis ”use strict” er erklæret i begyndelsen af en JavaScript-fil, så har erklæringen global rækkevidde (scope)
+    (al kode vil blive eksekveret I strict mode.).
 
- With strict mode, you can not, for example, use undeclared variables.
+    få mere information angående strict mode:
+        http://www.w3schools.com/js/js_strict.asp
+
+
+    En af de vigtigste følger af at bruge ”strict mode” er, at man undgår at ”forurening” det globale scope ved et uheld,
+    fordi:
+        I ”Strict mode” er det ikke tilladt at bruge ikke-deklareret variabler.
 */
 
-// allowed because we are in non "use strict" mode
-
-//"use strict";
-x = 1.7;            // x is not declared (var x = 1.7;)
-console.log(x);
 
 
-// now in "use strict" mode (have to declare y before initializing y)
-(function() {
-    "use strict";
+    //"use strict";
+/* ***************************************
+    g er ikke deklareret,
+    så dette er ikke tilladt i "strict mode"
+******************************************* */
 
-    var y = 1.7;    // x is declared
-    console.log(y);
-})();
+    g = 1.7;
+    console.log("variable g = " + g);
+
+/* ********************************************
+    variablen 'str' er ikke deklareret,
+    så dette er ikke tilladt i "strict mode".
+
+    i "non strict mode" vil str forurene det
+    globale scrope.
+ ******************************************* */
+
+    (function() {
+        str = "variablen str forurener det globale scope i non-strict mode";
+    })();
+    console.log(str);
+
+/* ***************************************
+    Man deklarerer Strict mode ved at tilføje
+    ”use strict; I begyndelsen af et
+    JavaScript eller en JavaScript funktion
+ ******************************************* */
+
+    (function() {
+        "use strict";
+        var f = 1.7;
+        console.log("variable f = " + f);
+    })();
+
+
 

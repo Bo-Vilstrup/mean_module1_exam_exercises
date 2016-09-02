@@ -1,0 +1,27 @@
+Questions:
+    Explain the differences between Java and JavaScript. You should include both topics related to the fact that Java is
+    a compiled language and JavaScript a scripted language, and general differences in language features.
+
+1)
+    På trods af egennavnet JavaScript både inkluderer ordet Java og Script i sit navn så har JavaScript
+    ikke noget med nogen af delene at gøre.
+
+    Lad mig citerer fra bogen "You don't know JS" "Scope & Closures" af Kyle Simpson:
+
+        Side 1 -- Compiler Theory
+        It may be self-evident, or it may be surprising, depending on your level of interaction with various languages,
+        but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages,
+        it is in fact a complied language. It is not complied well in advance, as are many traditionally complied languages,
+        nor are the results of compilation portable among various distributed systems.
+
+    Altså: Java og JavaScript er begge kompilerede computer sprog.
+
+
+2)
+
+    Features forskelle:
+
+    JAva                                    JavaScript
+    Java er klassebaseret                   JavaScript er prototype-baseret
+    Java uses block-based scoping           JavaScript uses function-based scoping.
+    objekter er first-class members         funktioner og objekter er first-class members
